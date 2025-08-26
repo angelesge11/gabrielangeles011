@@ -56,7 +56,7 @@
 
         .text-scroll span {
             display: inline-block;
-            padding-left: 100%; /* Start off-screen */
+            padding-left: 100%;
             animation: scroll-text 30s linear infinite;
         }
 
@@ -82,23 +82,23 @@
             padding: 64px 0; 
         }
         .row-padding {
-            padding: 16px 0; /* Adds padding between rows */
+            padding: 16px 0; 
         }
         .quarter {
-            width: 25%; /* Ensures each statistic box takes up 25% of the width */
-            padding: 16px; /* Adds padding inside each box */
-            box-sizing: border-box; /* Ensures padding is included in the width */
+            width: 25%; 
+            padding: 16px; 
+            box-sizing: border-box; 
         }
         .xxlarge {
-            font-size: 48px; /* Large font size for statistics */
-            font-weight: bold; /* Bold text for emphasis */
+            font-size: 48px; 
+            font-weight: bold; 
         }
         .black {
-            background-color: #000; /* Black background for footer */
-            color: white; /* White text for footer */
+            background-color: #000; 
+            color: white; 
         }
         .hover-opacity:hover {
-            opacity: 0.7; /* Adds hover effect to social icons */
+            opacity: 0.7;
         
         }
         .dela-gothic-one-regular {
