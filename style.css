@@ -1,0 +1,143 @@
+        .navbar {
+            background-color: transparent !important; 
+        }
+        .navbar-brand {
+            color: white;
+        }
+        .navbar .nav-link {
+            color: white;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            color: white;
+            text-align: left;
+            padding-left: 50px;
+        }
+
+        .text-scroll {
+            position: absolute;
+            bottom: -100px;
+            left: 0;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 24px;
+            font-family: "Dela Gothic One", sans-serif;
+            color: white;
+        }
+
+        .text-scroll span {
+            display: inline-block;
+            padding-left: 100%; /* Start off-screen */
+            animation: scroll-text 30s linear infinite;
+        }
+
+        @keyframes scroll-text {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        body, html {
+    background-color: #000 !important;
+        }
+        .light-grey {
+            background-color: #f9f9f9; 
+        }
+        .dark-grey {
+            background-color: #333; 
+            color: white; 
+        }
+        .padding-64 {
+            padding: 64px 0; 
+        }
+        .row-padding {
+            padding: 16px 0; /* Adds padding between rows */
+        }
+        .quarter {
+            width: 25%; /* Ensures each statistic box takes up 25% of the width */
+            padding: 16px; /* Adds padding inside each box */
+            box-sizing: border-box; /* Ensures padding is included in the width */
+        }
+        .xxlarge {
+            font-size: 48px; /* Large font size for statistics */
+            font-weight: bold; /* Bold text for emphasis */
+        }
+        .black {
+            background-color: #000; /* Black background for footer */
+            color: white; /* White text for footer */
+        }
+        .hover-opacity:hover {
+            opacity: 0.7; /* Adds hover effect to social icons */
+        
+        }
+        .dela-gothic-one-regular {
+            font-family: "Dela Gothic One", sans-serif;
+            font-weight: 400;
+            font-style: normal; 
+        }
+        .image {
+        width: 100%;
+        height: 600px; 
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+}
+        
+        #interest .interest-card .card {
+        transition: 
+        transform 0.3s cubic-bezier(.4,2,.6,1), 
+        box-shadow 0.3s, 
+        filter 0.3s;
+}
+        #interest .interest-card .card:hover { 
+        transform: translateY(-12px) scale(1.05) rotate(-1deg);
+        box-shadow: 0 16px 40px 0 rgba(0,0,0,0.35), 0 2px 8px 0 rgba(0,0,0,0.15);
+        filter: brightness(1.08) saturate(1.1);
+        z-index: 2;
+}
+        footer 
+        {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+         flex-direction: column;
+        }
+        
+        .montserrat {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;        
+        }
