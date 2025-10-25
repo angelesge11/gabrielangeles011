@@ -1,0 +1,120 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finals Lab Task 1 - Gabriel Elmo Angeles</title>
+  <link rel="stylesheet" href="labtask.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <a class="back" href="">← Back to Portfolio</a>
+      <h1 style="color: yellow">Finals Lab Task 1</h1>
+      <p class="muted">Encapsulation - A Car That Works
+</p>
+    </header>
+
+    <section>
+      <h2 style="color: yellow">Description</h2>
+      <p>
+        This finals activity shows how encapsulation works in 
+        Python by using private attributes and methods in a Car class and displaying object details through a constructor.
+      </p>
+    </section>
+
+        <section>
+      <h2 style="color: yellow">Problem</h2>
+      
+<p>
+For this program, you are required to define a class named <b>Car</b> with specific properties, methods, and a constructor. 
+The class should have the following:
+</p>
+
+<ul>
+  <li><b>color</b> (type: str) – represents the car’s color</li>
+  <li><b>price</b> (type: float) – holds the car’s price</li>
+  <li><b>size</b> (type: str) – indicates the size of the car (<b>'S'</b> = small, <b>'M'</b> = medium, <b>'L'</b> = large)</li>
+</ul>
+
+<p>
+The constructor <b>__init__(self, color: str, price: float, size: str)</b> initializes these properties, 
+with the size value automatically converted to uppercase using <b>size.upper()</b>.<br><br>
+
+The class should include getter methods (<b>get_color</b>, <b>get_price</b>, and <b>get_size</b>) 
+that return the respective property values.<br><br>
+
+It should also have setter methods (<b>set_color</b>, <b>set_price</b>, and <b>set_size</b>) 
+to modify each property, ensuring that the size value is one of <b>'S'</b>, <b>'M'</b>, or <b>'L'</b>, 
+and any lowercase input is converted to uppercase.<br><br>
+
+Lastly, the <b>__str__</b> method should return a formatted string showing the car’s details in the format:<br>
+<b>"Car (color) - P(price, formatted to two decimal places) - (size descriptor)"</b><br><br>
+
+The size descriptor corresponds to <b>'small'</b>, <b>'medium'</b>, or <b>'large'</b> based on the size property.<br><br>
+
+For example:<br>
+<b>Car (red) - P19999.85 - medium</b><br>
+<b>Car (blue) - P50000.00 - large</b><br>
+<b>Car (green) - P22000.00 - small</b><br>
+</p>
+
+
+<h2>  </h2>        
+<p class="muted">Revised Code:</p>
+      <div class="code-box">
+        <pre><code>class Car:
+    def __init__(self, model: str, price: float, transmission: str):
+        self.model = model
+        self.price = price
+        self.transmission = transmission.upper()
+								 
+    def get_model(self) -> str:
+        return self.model
+    def get_price(self) -> float:
+        return self.price
+    def get_size(self) -> str:
+        return self.transmission
+    def set_model(self, model: str) -> None:
+        self.model = model
+    def set_price(self, price: float) -> None:
+        self.price = price
+
+    def set_transmission(self, transmission: str) -> None:
+        self.transmission = transmission.upper()
+
+    def __str__(self) -> str:
+        transmission_descriptor = {
+            'M': 'Manual',
+            'A': 'Automatic',
+            'H': 'Hybrid'
+        }
+        return f"Car ({self.model}) - ${self.price:.2f} - {transmission_descriptor.get(self.transmission, 'unknown')}"
+
+car1 = Car("Mazda", 112999.99, "M")
+print(car1)
+
+car2 = Car("Toyota", 120000.00, "A")
+print(car2)
+
+car3 = Car("Ducatti", 123456.78, "H")
+print(car3)
+</code></pre>
+      </div>
+<h2></h2>  
+      <p class="muted">Output:</p>
+      <img src="labimg\foutput1.png" alt="">
+    </section>
+
+    <p>
+      <a class="button" href="pdf\Gabriel Elmo Angeles - Finals Lab Task 1.pdf" target="_blank">View Full PDF File</a>
+    </p>
+
+    <footer>
+      Oct 18, 2025 - Gabriel Elmo Angeles
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Midterm Lab Task 5 - Gabriel Elmo Angeles</title>
+  <link rel="stylesheet" href="labtask.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <a class="back" href="">← Back to Portfolio</a>
+      <h1 style="color: yellow">Midterm Lab Task 5</h1>
+      <p class="muted">Creating Class and Instantiating Objects in Python</p>
+    </header>
+
+    <section>
+      <h2 style="color: yellow">Description</h2>
+      <p>
+        This task involves making Python classes and testing how objects 
+        work using class attributes and methods to simulate user profiles in a social media setting.
+      </p>
+    </section>
+
+        <section>
+      <h2 style="color: yellow">Problem</h2>
+      <p>Create User Class with the ff: attributes (Use Constructor for this)</p>
+  <ul>
+    <li>first_name</li>
+    <li>last_name</li>
+    <li>followers_count</li>
+    <li>friends_name [LIST]</li>
+  </ul>
+
+  <p>Create the ff: methods</p>
+  <ul>
+    <li>introduce_self – which should output “Hi I am {first_name} {last_name}</li>
+    <li>
+      view_full_profile – which outputs all the information of the user as shown below<br>
+      Profile Name is Bradd Pitt with 10 followers<br>
+      Friends are… Juan Pedro Jose
+    </li>
+  </ul>
+
+  <p>
+    Create a separate TestUser class to test if the program is working as expected, allowing for
+    user input to be passed as parameters of the object. <br><br>Create at least 2 object instance to test
+    the class template
+  </p>
+
+<h2></h2>        
+<p class="muted">Code:</p>
+      <div class="code-box">
+        <pre><code># User Class
+class User:
+    # Constructor
+    def __init__(self, first_name, last_name, followers_count, friends_name):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.followers_count = followers_count
+        self.friends_name = friends_name
+
+    # Method 1: introduce_self
+    def introduce_self(self):
+        print(f"Hi I am {self.first_name} {self.last_name}")
+
+    # Method 2: view_full_profile
+    def view_full_profile(self):
+        print(f"Profile Name is: {self.first_name} {self.last_name} with {self.followers_count} followers")
+        print("Your friends are:", " ".join(self.friends_name))
+        print()
+
+
+# TestUser Class
+class TestUser:
+    def __init__(self):
+        self.users = []
+
+    def add_user(self):
+        while True:
+            choice = input("Insert a Record?[y|n]: ").lower().strip()
+            if choice == "n":
+                break
+            elif choice == "y":
+                first = input("First Name: ")
+                last = input("Last Name: ")
+                followers = int(input("Followers: "))
+                
+                print("Friends:")
+                friends = []
+                while True:
+                    friend = input()
+                    if friend == "":
+                        break
+                    friends.append(friend)
+
+                # Create User Object
+                user = User(first, last, followers, friends)
+                self.users.append(user)
+            else:
+                print("Invalid input. Please enter 'y' or 'n'.")
+
+    def show_all_users(self):
+        print("\nHere are the Records….")
+        print()
+        for user in self.users:
+            user.introduce_self()
+            user.view_full_profile()
+        print(f"There are currently {len(self.users)} Members in the Social Media page")
+
+
+# Main Program
+if __name__ == "__main__":
+    test = TestUser()
+    test.add_user()
+    test.show_all_users()
+</code></pre>
+      </div>
+<h2></h2>  
+      <p class="muted">Output:</p>
+      <img src="labimg\eoutput1.png" alt="">
+    </section>
+
+    <p>
+      <a class="button" href="pdf\Gabriel Elmo Angeles - Midterm Lab Task 5.pdf" target="_blank">View Full PDF File</a>
+    </p>
+
+    <footer>
+      Oct 6, 2025 Gabriel Elmo Angeles
+    </footer>
+
+  </div>
+</body>
+</html>

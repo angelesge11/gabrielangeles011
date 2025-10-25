@@ -1,0 +1,225 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Midterm Paired Task 1 - Gabriel Elmo Angeles</title>
+  <link rel="stylesheet" href="labtask.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="back" href="">← Back to Portfolio</a>
+      <h1 style="color: yellow">Midterm Paired Task 1</h1>
+      <p class="muted">Object Oriented Analysis and Design</p>
+    </header>
+
+    <section>
+      <h2 style="color: yellow">Problem Statement</h2>
+      <p>Tiny Hospital keeps information on patients and hospital rooms. 
+        The system assigns each patient a patient ID number. In addition, the patient’s name and date of birth are recorded. 
+        Some patients are resident patients (they spend at least one night in the hospital) and others are outpatients (they are treated and released). 
+        Resident patients are assigned to a room. Each room is identified by a room number. 
+        The Tiny hospital system also stores the room type (private or semi-private) and room fee.</p>
+      <p>Overtime, each room will have many patients who stay in it. Each resident patient will stay in only one room. 
+        The hospital system has features that can view patient information and view whether a room is occupied or not. 
+        Both patient and room entities must have features that allows adding, updating and searching of records.</p>
+
+    <section>
+      <h2 style="color: yellow">Step 1. Identify Objects</h2>
+      <ul>
+        <li> Patient (general class)</li>
+        <li>ResidentPatient (subclass)</li>
+        <li>OutPatient (subclass)</li>
+        <li>Room</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 style="color: yellow">Step 2. Identify Properties and Methods</h2>
+      <p class="muted">Objects with their properties and behaviors:</p>
+      <h3>Patient</h3>
+      <ul>
+        <li>Properties: <em>patientID, name, dateOfBirth</em></li>
+        <li>Methods: <em>addPatient(), updatePatient(), searchPatient(), viewInfo() </em></li>
+      </ul>
+
+      <h3>Resident Patient</h3>
+      <ul>
+        <li>Properties: <em>roomAssigned (Room) </em></li>
+        <li>Methods: <em>assignRoom() </em></li>
+      </ul>
+
+      <h3>OutPatient</h3>
+      <ul>
+        <li>Methods: <em>dischargePatient() </em></li>
+      </ul>
+
+      <h3>Room</h3>
+      <ul>
+        <li>roomNumber</li>
+        <li>Properties: – <em>roomNumber, roomType, roomFee, isOccupied </em></li>
+        <li>Methods: – <em>addRoom(), updateRoom(), searchRoom(), isOccupied(), viewRoomInfo()</em></li>
+      </ul>
+
+      <h3>Hospital Flow</h3>
+      <ul>
+        <li>patientList – <em>addPatient()</em></li>
+        <li>roomList – <em>updatePatient()</em></li>
+        <li><em>searchPatient()</em></li>
+        <li><em>viewPatient()</em></li>
+        <li><em>viewRstat()</em></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 style="color: yellow">Step 3. Design the Model</h2>
+      <p class="muted">Class Diagram (created using draw.io):</p>
+      <img src="labimg\diagram.png" alt="Diagram">
+    </section>
+
+    <section>
+      <h2 style="color: yellow">Step 4. Implement the Classes</h2>
+      <p class="muted">Java class implementation and methods codes:</p>
+      <div class="code-box">
+      <pre><code>
+  class Patient {
+    String patientID;
+    String name;
+    String dateOfBirth;
+
+    public Patient(String patientID, String name, String dateOfBirth) {
+        this.patientID = patientID;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void addPatient() {
+        System.out.println("Patient added: " + name);
+    }
+
+    public void updatePatient() {
+        System.out.println("Updating patient record for " + name);
+    }
+
+    public void searchPatient(String id) {
+        if (id.equals(patientID)) {
+            System.out.println("Patient found: " + name);
+        } else {
+            System.out.println("Patient not found.");
+        }
+    }
+
+    public void viewInfo() {
+        System.out.println("Patient ID: " + patientID);
+        System.out.println("Name: " + name);
+        System.out.println("Date of Birth: " + dateOfBirth);
+    }
+}
+
+// Subclass for resident patients
+class ResidentPatient extends Patient {
+    Room roomAssigned;
+
+    public ResidentPatient(String patientID, String name, String dateOfBirth) {
+        super(patientID, name, dateOfBirth);
+    }
+
+    public void assignRoom(Room room) {
+        this.roomAssigned = room;
+        room.isOccupied = true;
+        System.out.println(name + " assigned to Room " + room.roomNumber);
+    }
+
+    @Override
+    public void viewInfo() {
+        super.viewInfo();
+        if (roomAssigned != null) {
+            System.out.println("Room Assigned: " + roomAssigned.roomNumber);
+        }
+    }
+}
+
+// Subclass for outpatients
+class OutPatient extends Patient {
+    public OutPatient(String patientID, String name, String dateOfBirth) {
+        super(patientID, name, dateOfBirth);
+    }
+
+    public void dischargePatient() {
+        System.out.println(name + " has been treated and discharged.");
+    }
+}
+
+// Room class
+class Room {
+    String roomNumber;
+    String roomType;
+    double roomFee;
+    boolean isOccupied;
+
+    public Room(String roomNumber, String roomType, double roomFee) {
+        this.roomNumber = roomNumber;
+        this.roomType = roomType;
+        this.roomFee = roomFee;
+        this.isOccupied = false;
+    }
+
+    public void addRoom() {
+        System.out.println("Room added: " + roomNumber);
+    }
+
+    public void updateRoom() {
+        System.out.println("Room " + roomNumber + " updated.");
+    }
+
+    public void searchRoom(String number) {
+        if (number.equals(roomNumber)) {
+            System.out.println("Room found: " + roomNumber);
+        } else {
+            System.out.println("Room not found.");
+        }
+    }
+
+    public void viewRoomInfo() {
+        System.out.println("Room Number: " + roomNumber);
+        System.out.println("Room Type: " + roomType);
+        System.out.println("Room Fee: " + roomFee);
+        System.out.println("Occupied: " + (isOccupied ? "Yes" : "No"));
+    }
+}
+
+// Main class
+public class TinyHospitalSystem {
+    public static void main(String[] args) {
+        // Create a room
+        Room room1 = new Room("101", "Private", 1500);
+
+        // Create patients
+        ResidentPatient rp = new ResidentPatient("P001", "Alice", "1990-05-12");
+        OutPatient op = new OutPatient("P002", "Bob", "1985-10-22");
+
+        // Add records
+        room1.addRoom();
+        rp.addPatient();
+        op.addPatient();
+
+        // Assign room to resident patient
+        rp.assignRoom(room1);
+
+        // Show details
+        rp.viewInfo();
+        op.dischargePatient();
+        room1.viewRoomInfo();
+    }
+}
+</code></pre>
+
+      <p><a class="button" href="pdf\Gabriel Elmo Angeles - Paired Task 1. Object Oriented Analysis (1).pdf" target="_blank">View Full PDF File</a></p>
+    </section>
+
+    <footer>
+      Aug 23, 2025 - Gabriel Elmo Angeles
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Midterm Lab Task 4 - Gabriel Elmo Angeles</title>
+  <link rel="stylesheet" href="labtask.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <a class="back" href="">← Back to Portfolio</a>
+      <h1 style="color: yellow">Midterm Lab Task 4</h1>
+      <p class="muted">Using Dictionary Collections</p>
+    </header>
+
+    <section>
+      <h2 style="color: yellow">Description</h2>
+      <p>
+        This lab activity demonstrates how to use Python dictionaries and lists to build a simple 
+        food ordering system that displays a menu, validates orders, and computes the total.
+      </p>
+    </section>
+
+        <section>
+      <h2 style="color: yellow">Problem</h2>
+      <p class="muted">The user will continue to input orders until q is typed to quit. Then display the summary of
+orders with the total bill.</p>
+      
+      <p class="muted">
+        1. Use a dictionary(for the menu) and List(for the orders in the cart)
+        <br>2. Users may input the same item in the cart.
+        <br>3. Follow the exact format and whitespace for the menu
+        <br>4. User input should be case insensitive
+        <br>5. If the user inputted an item not in the Menu – it will not include it in the cart and display “Not Available” and input another item
+        <br>6. Create a MENU with 10 items and assign prices in Peso (php) - You may choose whatitems you would like to put in your cart</p>
+<h2>  </h2>        
+<p class="muted">Code:</p>
+      <div class="code-box">
+        <pre><code>menu = {
+    "Tapsilog": 110,
+    "Tocilog": 100,
+    "Longsilog": 95,
+    "Hotsilog": 90,
+    "Bangsilog": 120,
+    "Chicksilog": 115,
+    "Sisigsilog": 130,
+    "Adobosilog": 125,
+    "Porksilog": 105,
+    "Iced Tea": 40
+}
+
+print("======= TAPSI LOGAN MENU =======")
+for item, price in menu.items():
+    print(f"{item:15} Php {price}")
+print("================================")
+
+orders = []
+
+while True:
+    order = input("\nEnter your order (q to quit): ").strip()
+    
+    if order.lower() == "q":
+        break
+    
+    found = False
+    for item in menu:
+        if item.lower() == order.lower():
+            orders.append(item)
+            print(f"Added {item} to cart.")
+            found = True
+            break
+    
+    if not found:
+        print("Not Available")
+
+print("\n======= ORDER SUMMARY =======")
+if orders:
+    total = 0
+    counted = {}
+    
+    for item in orders:
+        counted[item] = counted.get(item, 0) + 1
+    
+    for item, qty in counted.items():
+        price = menu[item] * qty
+        total += price
+        print(f"{item:15} x{qty:<3} Php {price}")
+    
+    print("-----------------------------")
+    print(f"TOTAL BILL:{' ':8} Php {total}")
+else:
+    print("No orders made.")
+print("==============================")
+</code></pre>
+      </div>
+<h2></h2>  
+      <p class="muted">Output:</p>
+      <img src="labimg\doutput1.png" alt="">
+    </section>
+
+    <p>
+      <a class="button" href="pdf\Gabriel Elmo Angeles - Midterm Lab Task 4.pdf" target="_blank">View Full PDF File</a>
+    </p>
+
+    <footer>
+      Sep 20, 2025 - Gabriel Elmo Angeles
+    </footer>
+
+  </div>
+</body>
+</html>
